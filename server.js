@@ -17,8 +17,8 @@ app.get("/", function (request, response) {
 });
 
 app.get("/api/whoami", function (request, response) {
-  response.send(request.headers);
-  // {ipaddress: request.headers["x-forwarded-for"], language, xequest.headers["language"], software: []}
+  response.send(
+  {ipaddress: request.headers["x-forwarded-for"].split(",")[0], language: request.headers["accept-language"].split(",")[0], software: request.headers["user-agent"].split(" ").slice(1, 4).join(" ").slice(1, -1)})
 });
 
 app.get("/dreams", function (request, response) {
