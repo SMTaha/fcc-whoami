@@ -16,6 +16,11 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.get("/api/whoami", function (request, response) {
+  response.send(request.headers);
+  // {ipaddress: request.headers["x-forwarded-for"], language, xequest.headers["language"], software: []}
+});
+
 app.get("/dreams", function (request, response) {
   response.send(dreams);
 });
